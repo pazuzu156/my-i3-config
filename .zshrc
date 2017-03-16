@@ -1,6 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# startx if not started on login
+if ! xset q &>/dev/null ; then
+    startx
+else
+    neofetch
+fi
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/kaleb/.oh-my-zsh
 
@@ -86,3 +93,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+function grub-update {
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+function grub-edit {
+    sudo vim /etc/default/grub
+    grub-update
+}
+
