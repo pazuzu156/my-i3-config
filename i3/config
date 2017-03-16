@@ -192,9 +192,9 @@ bar {
   }
 }
 
-client.focused 		    $gray1 $gray1 #FFFFFF $gray1
-client.focused_inactive $gray2 $gray2 #FFFFFF #000000
-client.unfocused 	    $gray2 $gray2 #FFFFFF #000000
+client.focused 		    $gray1 $gray1 $text-color $gray1
+client.focused_inactive $gray2 $gray2 $inactive-text-color #000000
+client.unfocused 	    $gray2 $gray2 $inactive-text-color #000000
 
 # custom binds
 bindsym $mod+f exec --no-startup-id firefox
