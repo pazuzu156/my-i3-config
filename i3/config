@@ -203,10 +203,17 @@ exec_always --no-startup-id restart
 exec --no-startup-id numlockx on
 bindsym Print exec --no-startup-id xfce4-screenshooter
 
-# Pulse Audio controls
+# Audio controls
 bindsym $mod+Shift+F3 exec amixer -D pulse sset Master 5%+
 bindsym $mod+Shift+F2 exec amixer -D pulse sset Master 5%-
 bindsym $mod+Shift+F1 exec amixer -D pulse sset Master 1+ toggle
+
+# i3blocks num/caps and vol keys
+bindsym --release Caps_Lock     exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock      exec pkill -SIGRTMIN+11 i3blocks
+bindsym --release $mod+Shift+F2 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+Shift+F3 exec pkill -SIGRTMIN+10 i3blocks
+bindsym --release $mod+Shift+F1 exec pkill -SIGRTMIN+10 i3blocks
 
 set $Locker ~/.config/i3/lock.sh 
 set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
