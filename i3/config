@@ -178,7 +178,7 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
-set $gray1 #373d48
+set $gray1 #373d48 
 set $gray2 #29303a
 
 bar {
@@ -208,7 +208,7 @@ bindsym $mod+Shift+F3 exec amixer -D pulse sset Master 5%+
 bindsym $mod+Shift+F2 exec amixer -D pulse sset Master 5%-
 bindsym $mod+Shift+F1 exec amixer -D pulse sset Master 1+ toggle
 
-set $Locker i3lock-wrapper -l
+set $Locker ~/.config/i3/lock.sh 
 set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
