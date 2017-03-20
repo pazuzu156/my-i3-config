@@ -207,9 +207,21 @@ exec --no-startup-id numlockx on
 # bindsym Print exec --no-startup-id xfce4-screenshooter
 
 # scrot
-bindsym Print exec --no-startup-id i3scrot
-bindsym --release Shift+Print exec --no-startup-id i3scrot -s
-bindsym --release Control+Shift+Print exec --no-startup-id i3scrot -w
+#bindsym Print exec --no-startup-id i3scrot
+#bindsym --release Shift+Print exec --no-startup-id i3scrot -s
+#bindsym --release Control+Shift+Print exec --no-startup-id i3scrot -w
+
+set $mode_scrot Screenshot (f) fullscreen, (w) window, (r) region
+mode "$mode_scrot" {
+    bindsym --release f exec --no-startup-id i3scrot, mode "default"
+    bindsym --release w exec --no-startup-id i3scrot -w, mode "default"
+    bindsym --release r exec --no-startup-id i3scrot -s, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym Print mode "$mode_scrot"
 
 # Audio controls
 bindsym $mod+Shift+F3 exec amixer -D pulse sset Master 5%+
