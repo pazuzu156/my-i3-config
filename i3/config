@@ -191,7 +191,7 @@ exec --no-startup-id numlockx on
 # i3scrot
 set $mode_scrot Screenshot (f) fullscreen, (w) window, (r) region
 mode "$mode_scrot" {
-    bindsym --release f exec --no-startup-id i3scrot, mode "default"
+    bindsym --release f exec --no-startup-id i3scrot -f, mode "default"
     bindsym --release w exec --no-startup-id i3scrot -w, mode "default"
     bindsym --release r exec --no-startup-id i3scrot -s, mode "default"
 
