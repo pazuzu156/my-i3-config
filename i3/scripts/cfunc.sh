@@ -25,15 +25,19 @@ export MAKEFLAGS="${MAKEOPTS}"
 
 # custom functions
 # delete what you don't need
+
+# Update grub config
 function grub-update {
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
+# Edit /etc/default/grub then update
 function grub-edit {
     sudo vim /etc/default/grub
     grub-update
 }
 
+# Update my i3 config scripts
 function updi3conf {
     I3C=$HOME/.config/i3
     ROFI=$HOME/.config/rofi
@@ -56,6 +60,7 @@ function updi3conf {
     cp -v $HOME/.xinitrc ${MI3C}/.xinitrc
 }
 
+# Perform basic git add/commit/tags/push
 function git-push {
     git add -A
     git commit -S -s -m $1
