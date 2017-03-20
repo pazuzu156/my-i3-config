@@ -1,10 +1,20 @@
 #!/bin/bash
 
 # If statement to run startx on login if x not up
-# if x is up, run neofetch (comment out block to disable)
+# if x is up, run neofetch (comment out variable to disable)
 
-if ! xset q &>/dev/null ; then
-    startx
+STARTX_LOGIN=true
+
+if ! [ -z ${STARTX_LOGIN+x} ] ; then
+    if ${STARTX_LOGIN} ; then
+        if ! xset q &>/dev/null ; then
+            startx
+        else
+            neofetch
+        fi
+    else
+        neofetch
+    fi
 else
     neofetch
 fi
@@ -41,6 +51,16 @@ function updi3conf {
     cp -v $HOME/.vimrc ${MI3C}/.vimrc
     cp -v $HOME/.zshrc ${MI3C}/.zshrc
     cp -v $HOME/.xinitrc ${MI3C}/.xinitrc
+}
+
+function git-push {
+    git add -A
+    git commit -S -s -m $1
+    if ! [ -z ${2+x} ] ; then
+        git tag v$2
+        git push --tags
+    fi
+    git push
 }
 
 # aliases
