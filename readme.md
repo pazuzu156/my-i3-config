@@ -18,6 +18,16 @@ I'm an Arch Linux user, so all packages I list are listed as they are in the arc
 `numlockx` - Enabling num lock on login  
 `firefox` - Web browser ;)  
 `rofi-git` - (AUR) The dmenu replacer  
-`compton` - The window compositor (Called in .xinitrc
+`compton` - The window compositor (Called in .xinitrc)  
+`vim` - The terminal text editor  
+`zsh` - The bash shell replacement
 
 Having these packages installed will work with my current config. The i3 config is also styled to match the Arc-Dark theme. You may change the colors used to suit your needs, or leave them if you like the color scheme.
+
+## Arch
+If you're an arch user, clone this repo and checkout the arch branch, or, download the Arch PKGBUILD file and run
+
+`$ makepkg -is`
+
+`-i` - Install upon build completion  
+`-s` - Install all required dependencies
