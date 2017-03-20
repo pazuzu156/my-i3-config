@@ -18,6 +18,9 @@ font pango:DejaVuSans 10
 # Force desktop background with feh
 exec_always --no-startup-id ~/.fehbg
 
+# start dunst as notification daemon
+exec_always --no-startup-id dunst -config ~/.config/i3/dunstrc
+
 smart_gaps on
 gaps inner 20
 gaps outer 5
@@ -178,7 +181,7 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
-set $gray1 #373d48 
+set $gray1 #373d48
 set $gray2 #29303a
 
 bar {
@@ -201,7 +204,12 @@ bindsym $mod+f exec --no-startup-id firefox
 exec_always --no-startup-id xrandr --output VGA-1 --mode 1920x1080
 exec_always --no-startup-id restart
 exec --no-startup-id numlockx on
-bindsym Print exec --no-startup-id xfce4-screenshooter
+# bindsym Print exec --no-startup-id xfce4-screenshooter
+
+# scrot
+bindsym Print exec --no-startup-id i3scrot
+bindsym --release Shift+Print exec --no-startup-id i3scrot -s
+bindsym --release Control+Shift+Print exec --no-startup-id i3scrot -w
 
 # Audio controls
 bindsym $mod+Shift+F3 exec amixer -D pulse sset Master 5%+
@@ -215,7 +223,7 @@ bindsym --release $mod+Shift+F2 exec pkill -SIGRTMIN+10 i3blocks
 bindsym --release $mod+Shift+F3 exec pkill -SIGRTMIN+10 i3blocks
 bindsym --release $mod+Shift+F1 exec pkill -SIGRTMIN+10 i3blocks
 
-set $Locker ~/.config/i3/lock.sh 
+set $Locker ~/.config/i3/scripts/lock.sh
 set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
