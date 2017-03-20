@@ -1,15 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# startx if not started on login
-if ! xset q &>/dev/null ; then
-    startx
-else
-    neofetch
-fi
+source $HOME/.config/i3/scripts/cfunc.sh
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/kaleb/.oh-my-zsh
+export ZSH=/home/kaleb/.oh-my-zsh
 
 export MAKEOPTS="-j 4"
 export MAKEFLAGS="${MAKEOPTS}"
@@ -93,21 +88,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-function grub-update {
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
-}
-
-function grub-edit {
-    sudo vim /etc/default/grub
-    grub-update
-}
-
-function lampp {
-    sudo /opt/lampp/lampp $1
-}
-
-function srcinfo {
-    makepkg --printsrcinfo > .SRCINFO
-}
-

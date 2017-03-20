@@ -184,8 +184,8 @@ client.unfocused 	    $gray2 $gray2 $inactive-text-color #000000
 
 # custom binds
 bindsym $mod+f exec --no-startup-id firefox
-exec_always --no-startup-id xrandr --output VGA-1 --mode 1920x1080
-exec_always --no-startup-id restart
+#exec_always --no-startup-id xrandr --output VGA-1 --mode 1920x1080
+#exec_always --no-startup-id restart
 exec --no-startup-id numlockx on
 
 # i3scrot
@@ -226,3 +226,28 @@ mode "$mode_system" {
 }
 
 bindsym $mod+p mode "$mode_system"
+
+# VBox/VMWare screensize settings with xrandr
+# xrandr will by default resize to xlarge!
+
+# Change $DISPLAY to match your display adapter
+set $DISPLAY VGA-1
+set $xs 800x600
+set $xm 1024x768
+set $xl 1366x768
+set $xx 1920x1080
+
+exec --no-startup-id xrandr --output $DISPLAY --mode $xx
+exec --no-startup-id restart
+set $mode_xrandr xrandr screen size (s) 800x600, (m) 1024x768, (l) 1366x768, (x) 1920x1080
+mode "$mode_xrandr" {
+    bindsym s exec --no-startup-id xrandr --output $DISPLAY --mode $xs, mode "default" 
+    bindsym m exec --no-startup-id xrandr --output $DISPLAY --mode $xm, mode "default"
+    bindsym l exec --no-startup-id xrandr --output $DISPLAY --mode $xl, mode "default"
+    bindsym x exec --no-startup-id xrandr --output $DISPLAY --mode $xx, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_xrandr"
