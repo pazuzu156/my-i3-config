@@ -9,7 +9,7 @@ I'm an Arch Linux user, so all packages I list are listed as they are in the arc
 
 `imagemagick` - For i3lock since I use a custom shell script for my lock screen  
 `scrot` - Screenshots AND i3lock (used to take screenshot for lock screen)  
-`i3scrot-git` - (AUR) Used for taking screenshots easy in i3  
+[`i3scrot-git`](https://github.com/pazuzu156/i3scrot) - (AUR) Used for taking screenshots easy in i3  
 `i3blocks` - (AUR) Used for the status bar (i3status wrapper)  
 `i3-gaps-git` - (AUR) Used for adding gaps between windows  
 `feh` - For setting the wallpaper (Remember to call `$ feh --bg-fill PATH` first!)  
