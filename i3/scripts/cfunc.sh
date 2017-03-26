@@ -71,7 +71,25 @@ function git-push {
     git push
 }
 
+# Mount/Unmount Windows partition
+function winmount {
+    if ! [ -z ${1+x} ] ; then
+        sudo mkdir /mnt/Windows
+        sudo mount $1 /mnt/Windows
+        echo "Mounted. Run cdwin to open the directory"
+    else
+        echo "You must give a parition to mount!"
+    fi
+}
+
+function winumount {
+    sudo umount -R /mnt/Windows
+    sudo rm -rf /mnt/Windows
+    echo "Unmounted. To remount, run winmount"
+}
+
 # aliases
 # delete what you don't need
 alias lampp='sudo /opt/lampp/lampp $1'
 alias srcinfo='makepkg --printsrcinfo > .SRCINFO'
+alias cdwin='cd /mnt/Windows'
