@@ -42,6 +42,7 @@ function updi3conf {
     I3C=$HOME/.config/i3
     ROFI=$HOME/.config/rofi
     MI3C=$HOME/my-i3-config
+    TERM=$HOME/.config/terminator
 
     cp -v ${I3C}/compton.conf ${MI3C}/i3/compton.conf
     cp -v ${I3C}/config ${MI3C}/i3/config
@@ -54,6 +55,8 @@ function updi3conf {
     cp -v ${I3C}/scripts/cfunc.sh ${MI3C}/i3/scripts/cfunc.sh
 
     cp -v ${ROFI}/config ${MI3C}/rofi/config
+
+    cp -v ${TERM}/config ${MI3C}/terminator/config
 
     cp -v $HOME/.vimrc ${MI3C}/.vimrc
     cp -v $HOME/.zshrc ${MI3C}/.zshrc
