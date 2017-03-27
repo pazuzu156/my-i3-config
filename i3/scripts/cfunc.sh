@@ -39,10 +39,11 @@ function grub-edit {
 
 # Update my i3 config scripts
 function updi3conf {
-    I3C=$HOME/.config/i3
-    ROFI=$HOME/.config/rofi
-    MI3C=$HOME/my-i3-config
-    TERM=$HOME/.config/terminator
+    CFG=${HOME}/.config
+    I3C=${CFG}/i3
+    ROFI=${CFG}/rofi
+    TERMC=${CFG}/terminator
+    MI3C=${HOME}/my-i3-config
 
     cp -v ${I3C}/compton.conf ${MI3C}/i3/compton.conf
     cp -v ${I3C}/config ${MI3C}/i3/config
@@ -56,7 +57,7 @@ function updi3conf {
 
     cp -v ${ROFI}/config ${MI3C}/rofi/config
 
-    cp -v ${TERM}/config ${MI3C}/terminator/config
+    cp -v ${TERMC}/config ${MI3C}/terminator/config
 
     cp -v $HOME/.vimrc ${MI3C}/.vimrc
     cp -v $HOME/.zshrc ${MI3C}/.zshrc
@@ -89,6 +90,31 @@ function winumount {
     sudo umount -R /mnt/Windows
     sudo rm -rf /mnt/Windows
     echo "Unmounted. To remount, run winmount"
+}
+
+# Specific to PHP
+# Composer install script
+function install-composer {
+    EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
+
+    if [ "${EXPECTED_SIGNATURE}" != "${ACTUAL_SIGNATURE}" ] ; then
+        >&2 echo 'ERROR: Invalid installer signature'
+        rm composer-setup.php
+    else
+        php composer-setup.php --quiet
+        php -r "unlink('composer-setup.php');"
+        sudo mv composer.phar /usr/bin/composer
+        echo 'Composer installed. Run `composer` to make sure it is there'
+    fi
+}
+
+# Runs a source on this script to re-source it
+# into the active terminal to update any changes
+# on the fly
+function resource-i3func {
+    source ${HOME}/.config/i3/scripts/cfunc.sh
 }
 
 # aliases

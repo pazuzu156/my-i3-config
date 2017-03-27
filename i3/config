@@ -217,6 +217,7 @@ bindsym --release $mod+Shift+F3 exec pkill -SIGRTMIN+10 i3blocks
 bindsym --release $mod+Shift+F1 exec pkill -SIGRTMIN+10 i3blocks
 
 set $Locker ~/.config/i3/scripts/lock.sh
+#set $Locker i3lock
 set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
