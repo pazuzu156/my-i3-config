@@ -14,7 +14,7 @@ convert -size ${SIZE} xc:${COLOR} /tmp/screen-color.png
 convert /tmp/screen-color.png -alpha set -channel A -evaluate set 50% /tmp/screen-color.png
 
 # paint and blur the original scrot image
-convert /tmp/screen.png -paint 3 -blur 0x5 /tmp/screen.png
+convert /tmp/screen.png -paint 3 -blur 0x8 /tmp/screen.png
 
 # composite translucent solid color image to the original scrot image
 convert /tmp/screen.png /tmp/screen-color.png -gravity center -composite -matte /tmp/screen.png
