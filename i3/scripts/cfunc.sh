@@ -10,7 +10,8 @@ if ! [ -z ${STARTX_LOGIN+x} ] ; then
         if ! xset q &>/dev/null ; then
             startx
         else
-            neofetch
+            ASCII_ARCH=/usr/share/neofetch/ascii/distro/arch
+            neofetch --ascii ${ASCII_ARCH}
         fi
     else
         neofetch
