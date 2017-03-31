@@ -9,6 +9,7 @@ if ! [ -z ${STARTX_LOGIN+x} ] ; then
     if ${STARTX_LOGIN} ; then
         if ! xset q &>/dev/null ; then
             startx
+            exit
         else
             ASCII_ARCH=/usr/share/neofetch/ascii/distro/arch
             neofetch --ascii ${ASCII_ARCH}
@@ -78,8 +79,12 @@ function git-push {
 
 # Mount/Unmount Windows partition
 function winmount {
+    MNT=/mnt/Windows
     if ! [ -z ${1+x} ] ; then
-        sudo mkdir /mnt/Windows
+        if ! [ -d ${MNT} ] ; then
+            mkdir ${MNT}
+        fi
+
         sudo mount $1 /mnt/Windows
         echo "Mounted. Run cdwin to open the directory"
     else
@@ -116,6 +121,24 @@ function install-composer {
 # on the fly
 function resource-i3func {
     source ${HOME}/.config/i3/scripts/cfunc.sh
+}
+
+# Mount Android device.
+# Requires jmtpfs
+function android-mount {
+    AD=${HOME}/android
+    if ! [ -d ${AD} ] ; then
+        mkdir ${AD}
+    fi
+
+    jmtpfs ${AD}
+}
+
+function android-umount {
+    AD=${HOME}/android
+    sudo umount -R ${AD}
+    rm -rf ${AD}
+    echo 'Unmounted. Run `android-mount` to remount device'
 }
 
 # aliases
