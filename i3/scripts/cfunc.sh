@@ -13,6 +13,19 @@ export MAKEFLAGS="${MAKEOPTS}"
 function neo {
     ASCII_ARCH=/usr/share/neofetch/ascii/distro/arch
     neofetch --ascii ${ASCII_ARCH}
+    unset ASCII_ARCH
+}
+
+# Edit i3 config
+function i3conf-edit {
+    vim ~/.i3/config
+    i3 restart
+}
+
+# Edit this file
+function cfunc-edit {
+    vim ~/.i3/scripts/cfunc.sh
+    resource-i3func
 }
 
 # Update grub config
@@ -51,6 +64,12 @@ function updi3conf {
     cp -v $HOME/.vimrc ${MI3C}/.vimrc
     cp -v $HOME/.zshrc ${MI3C}/.zshrc
     cp -v $HOME/.xinitrc ${MI3C}/.xinitrc
+
+    unset CFG
+    unset I3C
+    unset ROFI
+    unset TERMC
+    unset MI3C
 }
 
 # Perform basic git add/commit/tags/push
@@ -78,6 +97,8 @@ function winmount {
     else
         echo "You must give a parition to mount!"
     fi
+
+    unset MNT
 }
 
 # Unmounts a Windows partition mounted with winmount
@@ -103,6 +124,9 @@ function install-composer {
         sudo mv composer.phar /usr/bin/composer
         echo 'Composer installed. Run `composer` to make sure it is there'
     fi
+
+    unset EXPECTED_SIGNATURE
+    unset ACTUAL_SIGNATURE
 }
 
 # Runs a source on this script to re-source it
@@ -121,6 +145,8 @@ function android-mount {
     fi
 
     jmtpfs ${AD}
+
+    unset AD
 }
 
 # Unmount a device mounted with android-mount
@@ -129,6 +155,8 @@ function android-umount {
     sudo umount -R ${AD}
     rm -rf ${AD}
     echo 'Unmounted. Run `android-mount` to remount device'
+
+    unset AD
 }
 
 # aliases
