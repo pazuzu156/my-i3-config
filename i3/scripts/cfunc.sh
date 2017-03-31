@@ -1,32 +1,19 @@
 #!/bin/bash
 
-# If statement to run startx on login if x not up
-# if x is up, run neofetch (comment out variable to disable)
-
-STARTX_LOGIN=true
-
-if ! [ -z ${STARTX_LOGIN+x} ] ; then
-    if ${STARTX_LOGIN} ; then
-        if ! xset q &>/dev/null ; then
-            startx
-            exit
-        else
-            ASCII_ARCH=/usr/share/neofetch/ascii/distro/arch
-            neofetch --ascii ${ASCII_ARCH}
-        fi
-    else
-        neofetch
-    fi
-else
-    neofetch
-fi
-
-# make stuff (if you want it)
+# Base defines as required by my Arch setup
+# remove/add as needed
 export MAKEOPTS="-j 4"
 export MAKEFLAGS="${MAKEOPTS}"
 
 # custom functions
 # delete what you don't need
+
+# Run neofetch forcing Arch Linux ASCII art
+# Not really needed if you don't rename lsb-release info
+function neo {
+    ASCII_ARCH=/usr/share/neofetch/ascii/distro/arch
+    neofetch --ascii ${ASCII_ARCH}
+}
 
 # Update grub config
 function grub-update {
@@ -78,6 +65,7 @@ function git-push {
 }
 
 # Mount/Unmount Windows partition
+# Must provide the partition number!
 function winmount {
     MNT=/mnt/Windows
     if ! [ -z ${1+x} ] ; then
@@ -92,6 +80,7 @@ function winmount {
     fi
 }
 
+# Unmounts a Windows partition mounted with winmount
 function winumount {
     sudo umount -R /mnt/Windows
     sudo rm -rf /mnt/Windows
@@ -134,6 +123,7 @@ function android-mount {
     jmtpfs ${AD}
 }
 
+# Unmount a device mounted with android-mount
 function android-umount {
     AD=${HOME}/android
     sudo umount -R ${AD}
@@ -146,3 +136,22 @@ function android-umount {
 alias lampp='sudo /opt/lampp/lampp $1'
 alias srcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias cdwin='cd /mnt/Windows'
+
+# Add STARTX_LOGIN to the calling script
+# Just define it to load in (also, set to true)
+if ! [ -z ${STARTX_LOGIN+x} ] ; then
+    if ${STARTX_LOGIN} ; then
+        if ! xset q &>/dev/null ; then
+            startx
+            # exit once X closes (for true log out)
+            exit
+        else
+            neo
+        fi
+    else
+        neo
+    fi
+else
+    neo
+fi
+
