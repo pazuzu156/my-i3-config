@@ -89,7 +89,7 @@ function winmount {
     MNT=/mnt/Windows
     if ! [ -z ${1+x} ] ; then
         if ! [ -d ${MNT} ] ; then
-            mkdir ${MNT}
+            sudo mkdir ${MNT}
         fi
 
         sudo mount $1 /mnt/Windows
