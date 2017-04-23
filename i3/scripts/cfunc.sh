@@ -56,6 +56,7 @@ function updi3conf {
     cp -v ${I3C}/scripts/lock.sh ${MI3C}/i3/scripts/lock.sh
     cp -v ${I3C}/scripts/lock.png ${MI3C}/i3/scripts/lock.png
     cp -v ${I3C}/scripts/cfunc.sh ${MI3C}/i3/scripts/cfunc.sh
+    cp -v ${I3C}/scripts/runsteamapp.sh ${MI3C}/i3/scripts/runsteamapp.sh
     cp -v ${I3C}/scripts/compton_startup.sh ${MI3C}/i3/scripts/compton_startup.sh
 
     cp -v ${ROFI}/config ${MI3C}/rofi/config
