@@ -47,7 +47,8 @@ function updi3conf {
     TERMC=${CFG}/terminator
     MI3C=${HOME}/my-i3-config
 
-    cp -v ${I3C}/compton.conf ${MI3C}/i3/compton.conf
+    cp -v ${I3C}/compton_i3.conf ${MI3C}/i3/compton_i3.conf
+    cp -v ${I3C}/compton_xfce.conf ${MI3C}/i3/compton_xfce.conf
     cp -v ${I3C}/config ${MI3C}/i3/config
     cp -v ${I3C}/dunstrc ${MI3C}/i3/dunstrc
     cp -v ${I3C}/i3blocks.conf ${MI3C}/i3/i3blocks.conf
@@ -57,7 +58,8 @@ function updi3conf {
     cp -v ${I3C}/scripts/lock.png ${MI3C}/i3/scripts/lock.png
     cp -v ${I3C}/scripts/cfunc.sh ${MI3C}/i3/scripts/cfunc.sh
     cp -v ${I3C}/scripts/runsteamapp.sh ${MI3C}/i3/scripts/runsteamapp.sh
-    cp -v ${I3C}/scripts/compton_startup.sh ${MI3C}/i3/scripts/compton_startup.sh
+    cp -v ${I3C}/scripts/i3startup.sh ${MI3C}/i3/scripts/i3startup.sh
+    cp -v ${I3C}/scripts/xfcestartup.sh ${MI3C}/i3/scripts/xfcestartup.sh
 
     cp -v ${ROFI}/config ${MI3C}/rofi/config
 
