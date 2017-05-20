@@ -163,6 +163,32 @@ function android-umount {
     unset AD
 }
 
+# Handle nginx service
+# Requires nginx|mariadb|php-fpm
+function lemp {
+    if [ ${1+x} ] ; then
+        ACTION=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+
+        if [ $ACTION = "stop" ] ; then
+            ACTIONS="stopp"
+        else
+            ACTIONS=$ACTION
+        fi
+
+        echo -n "${ACTIONS}ing nginx..."
+        sudo systemctl $ACTION nginx
+        echo "ok"
+        echo -n "${ACTIONS}ing php-fpm..."
+        sudo systemctl $ACTION php-fpm
+        echo "ok"
+        echo -n "${ACTIONS}ing mariadb..."
+        sudo systemctl $ACTION mariadb
+        echo "ok"
+    else
+        echo "Must have an action (start|stop|restart)"
+    fi
+}
+
 # aliases
 # delete what you don't need
 alias lampp='sudo /opt/lampp/lampp $1'
