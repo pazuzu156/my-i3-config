@@ -60,6 +60,7 @@ function updi3conf {
     cp -v ${I3C}/scripts/runsteamapp.sh ${MI3C}/i3/scripts/runsteamapp.sh
     cp -v ${I3C}/scripts/i3startup.sh ${MI3C}/i3/scripts/i3startup.sh
     cp -v ${I3C}/scripts/xfcestartup.sh ${MI3C}/i3/scripts/xfcestartup.sh
+    cp -v ${I3C}/scripts/lemp.sh ${MI3C}/i3/scripts/lemp.sh
 
     cp -v ${ROFI}/config ${MI3C}/rofi/config
 
@@ -163,34 +164,9 @@ function android-umount {
     unset AD
 }
 
-# Handle nginx service
-# Requires nginx|mariadb|php-fpm
-function lemp {
-    if [ ${1+x} ] ; then
-        ACTION=$(echo "$1" | tr '[:upper:]' '[:lower:]')
-
-        if [ $ACTION = "stop" ] ; then
-            ACTIONS="stopp"
-        else
-            ACTIONS=$ACTION
-        fi
-
-        echo -n "${ACTIONS}ing nginx..."
-        sudo systemctl $ACTION nginx
-        echo "ok"
-        echo -n "${ACTIONS}ing php-fpm..."
-        sudo systemctl $ACTION php-fpm
-        echo "ok"
-        echo -n "${ACTIONS}ing mariadb..."
-        sudo systemctl $ACTION mariadb
-        echo "ok"
-    else
-        echo "Must have an action (start|stop|restart)"
-    fi
-}
-
 # aliases
 # delete what you don't need
+alias lemp='sudo ~/.config/i3/scripts/lemp.sh'
 alias lampp='sudo /opt/lampp/lampp $1'
 alias srcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias cdwin='cd /mnt/Windows'
