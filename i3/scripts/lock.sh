@@ -20,7 +20,7 @@ convert /tmp/screen.png -paint 3 -blur 0x8 /tmp/screen.png
 convert /tmp/screen.png /tmp/screen-color.png -gravity center -composite -matte /tmp/screen.png
 
 # composite our lock icon onto the generated scrot image
-convert /tmp/screen.png ~/.config/i3/scripts/lock.png -gravity center -composite -matte /tmp/screen.png
+convert /tmp/screen.png ~/.config/i3/scripts/lock2.png -gravity center -composite -matte /tmp/screen.png
 
 # run i3lock and display with the new generated image
 i3lock -e -i /tmp/screen.png
