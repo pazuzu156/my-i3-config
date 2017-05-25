@@ -1,8 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Comment out if you want to disable auto-start of X
-STARTX_LOGIN=true
 source $HOME/.config/i3/scripts/cfunc.sh
 
 # Path to your oh-my-zsh installation.

@@ -164,8 +164,14 @@ function android-umount {
     unset AD
 }
 
+# Returns a string in all lower case
 function strtolower {
     echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+# Returns a string in all upper case
+function strtoupper {
+    echo "$1" | tr '[:lower:]' '[:upper:]'
 }
 
 # aliases
@@ -175,6 +181,9 @@ alias lampp='sudo /opt/lampp/lampp $1'
 alias srcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias cdwin='cd /mnt/Windows'
 
+# Simple statement to launch X
+# on login if user says Y and
+# X already not started
 if ! xset q &>/dev/null ; then
     echo -n "Do you want to start X now? (Y/N) "
     read STARTX_Q
@@ -187,29 +196,3 @@ if ! xset q &>/dev/null ; then
 else
     neo
 fi
-
-# Add STARTX_LOGIN to the calling script
-# Just define it to load in (also, set to true)
-#if ! [ -z ${STARTX_LOGIN+x} ] ; then
-#    if ${STARTX_LOGIN} ; then
-#        if ! xset q &>/dev/null ; then
-#            #startx
-#            #exit
-#            echo -n "Do you want to startx now? (Y/N) "
-#            read STARTX_Q
-#            if [ $(strtolower $STARTX_Q) = "y" ] ; then
-#                startx
-#                exit
-#            else
-#                neo
-#            fi
-#        else
-#            neo
-#        fi
-#    else
-#        neo
-#    fi
-#else
-#    neo
-#fi
-
