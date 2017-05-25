@@ -166,12 +166,12 @@ function android-umount {
 
 # Returns a string in all lower case
 function strtolower {
-    echo "$1" | tr '[:upper:]' '[:lower:]'
+    echo "$@" | tr '[:upper:]' '[:lower:]'
 }
 
 # Returns a string in all upper case
 function strtoupper {
-    echo "$1" | tr '[:lower:]' '[:upper:]'
+    echo "$@" | tr '[:lower:]' '[:upper:]'
 }
 
 # aliases
