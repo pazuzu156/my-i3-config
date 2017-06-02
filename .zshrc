@@ -85,3 +85,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+export PATH=/home/kaleb/.gem/ruby/2.4.0/bin:$PATH

@@ -1,15 +1,15 @@
 [global_config]
-  title_transmit_fg_color = "#c5c8c6"
-  title_transmit_bg_color = "#282a2e"
-  title_inactive_fg_color = "#c5c8c6"
-  title_inactive_bg_color = "#373b41"
+  title_transmit_fg_color = "#e8dfd6"
+  title_transmit_bg_color = "#0A1F24"
+  title_inactive_fg_color = "#e8dfd6"
+  title_inactive_bg_color = "#065f73"
 
 [profiles]
   [[default]]
-    palette = "#282a2e:#a54242:#8c9440:#de935f:#5f819d:#85678f:#5e8d87:#707880:#373b41:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#c5c8c6"
-    foreground_color = "#c5c8c6"
-    background_color = "#1d1f21"
-    cursor_color = "#c5c8c6"
+    palette = "#032c36:#c2454e:#7cbf9e:#8a7a63:#2e3340:#ff5879:#44b5b1:#f2f1b9:#065f73:#ef5847:#a2d9b1:#beb090:#61778d:#ff99a1:#9ed9d8:#f6f6c9"
+    foreground_color = "#e8dfd6"
+    background_color = "#1B2B34"
+    cursor_color = "#e8dfd6"
 
 [layouts]
   [[default]]
@@ -21,4 +21,3 @@
       type = Window
       parent = ""
 [plugins]
-

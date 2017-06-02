@@ -4,7 +4,7 @@
 scrot /tmp/screen.png
 
 # define color and get screen size
-COLOR=#373d48
+COLOR=#1B2B34
 SIZE=$(xrandr --current | grep '*' | uniq | awk '{print $1}')
 
 # generate new image from size and color
