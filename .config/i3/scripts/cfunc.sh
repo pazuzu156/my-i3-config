@@ -45,7 +45,8 @@ function updi3conf {
     I3C=${CFG}/i3
     ROFI=${CFG}/rofi
     TERMC=${CFG}/terminator
-    MI3C=${HOME}/my-i3-config
+    MI3=${HOME}/my-i3-config
+    MIC3=${MI3}/.config
 
     cp -v ${I3C}/compton_i3.conf ${MI3C}/i3/compton_i3.conf
     cp -v ${I3C}/compton_xfce.conf ${MI3C}/i3/compton_xfce.conf
@@ -66,9 +67,9 @@ function updi3conf {
 
     cp -v ${TERMC}/config ${MI3C}/terminator/config
 
-    cp -v $HOME/.vimrc ${MI3C}/.vimrc
-    cp -v $HOME/.zshrc ${MI3C}/.zshrc
-    cp -v $HOME/.xinitrc ${MI3C}/.xinitrc
+    cp -v $HOME/.vimrc ${MI3}/.vimrc
+    cp -v $HOME/.zshrc ${MI3}/.zshrc
+    cp -v $HOME/.xinitrc ${MI3}/.xinitrc
 
     unset CFG
     unset I3C
